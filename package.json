@@ -4,6 +4,7 @@
   "main": "./lib/rc-tiptap-editor.umd.js",
   "module": "./lib/rc-tiptap-editor.mjs",
   "types": "./lib/index.d.ts",
+  "packageManager": "pnpm@9.5.0",
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
