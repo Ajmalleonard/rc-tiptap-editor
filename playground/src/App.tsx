@@ -160,6 +160,9 @@ function App() {
         extensions={extensions}
         dark={theme === 'dark'}
         disabled={disable}
+        useEditorOptions={{
+          shouldRerenderOnTransaction: false,
+        }}
       />
 
       {typeof content === 'string' && (

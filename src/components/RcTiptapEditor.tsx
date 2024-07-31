@@ -3,7 +3,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useMemo } from 'react';
 
 import { AnyExtension, Editor as CoreEditor } from '@tiptap/core';
-import { useEditor, EditorContent } from '@tiptap/react';
+import { useEditor, EditorContent, UseEditorOptions } from '@tiptap/react';
 import { differenceBy, throttle } from 'lodash-unified';
 
 import { BubbleMenuImage, BubbleMenuVideo } from '@/components/menus/components/BubbleMenu';
@@ -19,11 +19,11 @@ import { hasExtension } from '@/utils/utils';
 
 import '../styles/index.scss';
 
-interface IProps {
+interface IPropsRcTiptapEditor {
   content: string;
   extensions: AnyExtension[];
-  output: 'html' | 'json' | 'text';
 
+  output: 'html' | 'json' | 'text';
   modelValue?: string | object;
   dark?: boolean;
   dense?: boolean;
@@ -39,10 +39,12 @@ interface IProps {
   editorClass?: string | string[] | Record<string, any>;
   contentClass?: string | string[] | Record<string, any>;
   onChangeContent?: (val: any) => void;
+
+  useEditorOptions?: UseEditorOptions;
 }
 
-function RcTiptapEditor(props: IProps, ref: any) {
-  const { content, extensions } = props;
+function RcTiptapEditor(props: IPropsRcTiptapEditor, ref: any) {
+  const { content, extensions, useEditorOptions = {} } = props;
   const { t } = useLocale();
 
   const sortExtensions = useMemo(() => {
@@ -63,6 +65,7 @@ function RcTiptapEditor(props: IProps, ref: any) {
     onUpdate: ({ editor }) => {
       onValueChange(editor);
     },
+    ...useEditorOptions,
   });
 
   useEffect(() => {
@@ -73,7 +76,7 @@ function RcTiptapEditor(props: IProps, ref: any) {
     editor?.setEditable(!props?.disabled);
   }, [editor, props?.disabled]);
 
-  function getOutput(editor: CoreEditor, output: IProps['output']) {
+  function getOutput(editor: CoreEditor, output: IPropsRcTiptapEditor['output']) {
     // eslint-disable-next-line unicorn/consistent-destructuring
     if (props?.removeDefaultWrapper) {
       if (output === 'html') {

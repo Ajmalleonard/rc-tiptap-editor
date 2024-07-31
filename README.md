@@ -1,9 +1,19 @@
-# Rc Tiptap Editor
+<p align="center">
+<a href="https://www.npmjs.com/package/rc-tiptap-editor" target="_blank" rel="noopener noreferrer">
+<img src="https://api.iconify.design/ic:round-wysiwyg.svg?color=%23bbdf58" alt="logo" width='100'/></a>
+</p>
 
-A modern WYSIWYG rich-text editor base on [tiptap](https://tiptap.dev) uses [shadcn](https://ui.shadcn.com/) components.
+<p align="center">
+ A modern WYSIWYG rich-text editor base on Tiptap uses Shadcn components.
+</p>
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![](https://img.shields.io/npm/v/rc-tiptap-editor.svg?label=version)](https://www.npmjs.com/package/rc-tiptap-editor)
+<p align="center">
+  <a href="https://www.npmjs.com/package/rc-tiptap-editor" target="_blank" rel="noopener noreferrer"><img src="https://badge.fury.io/js/rc-tiptap-editor.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/package/rc-tiptap-editor" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dt/rc-tiptap-editor.svg?logo=npm" alt="NPM Downloads" /></a>
+  <a href="https://bundlephobia.com/result?p=rc-tiptap-editor" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/bundlephobia/minzip/rc-tiptap-editor" alt="Minizip" /></a>
+  <a href="https://github.com/hunghg255/rc-tiptap-editor/graphs/contributors" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="Contributors" /></a>
+  <a href="https://github.com/hunghg255/rc-tiptap-editor/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/hunghg255/rc-tiptap-editor" alt="License" /></a>
+</p>
 
 ![App Screenshot](./screenshot/screenshot.png)
 
@@ -16,16 +26,16 @@ A modern WYSIWYG rich-text editor base on [tiptap](https://tiptap.dev) uses [sha
 - Use [shadcn](https://ui.shadcn.com/) components
 - Markdown support
 - TypeScript support
-- I18n support(`en`)
+- I18n support(`en`, `vi`)
 - Create your own extensions
 - Tailwind CSS support
 
 ## Installation
 
 ```bash
-  npm install rc-tiptap-editor
-  pnpm install rc-tiptap-editor
-  yarn add rc-tiptap-editor
+npm install rc-tiptap-editor
+pnpm install rc-tiptap-editor
+yarn add rc-tiptap-editor
 ```
 
 ## Usage
@@ -146,9 +156,38 @@ const App = () => {
       content={content as any}
       onChangeContent={onChangeContent}
       extensions={extensions}
+      useEditorOptions={{
+        shouldRerenderOnTransaction: false,
+      }}
     />
   );
 };
+```
+
+## Props
+
+```ts
+interface IPropsRcTiptapEditor {
+  content: string;
+  extensions: AnyExtension[];
+  output: 'html' | 'json' | 'text';
+  modelValue?: string | object;
+  dark?: boolean;
+  dense?: boolean;
+  disabled?: boolean;
+  label?: string;
+  hideToolbar?: boolean;
+  disableBubble?: boolean;
+  hideBubble?: boolean;
+  removeDefaultWrapper?: boolean;
+  maxWidth?: string | number;
+  minHeight?: string | number;
+  maxHeight?: string | number;
+  editorClass?: string | string[] | Record<string, any>;
+  contentClass?: string | string[] | Record<string, any>;
+  onChangeContent?: (val: any) => void;
+  useEditorOptions?: UseEditorOptions;
+}
 ```
 
 ## Run Locally
@@ -156,36 +195,36 @@ const App = () => {
 Clone the project
 
 ```bash
-  git clone https://github.com/hunghg255/rc-tiptap-editor.git
+git clone https://github.com/hunghg255/rc-tiptap-editor.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd rc-tiptap-editor
+cd rc-tiptap-editor
 ```
 
 Install dependencies
 
 ```bash
-  pnpm install
+pnpm install
 ```
 
 Start the Demo server
 
 ```bash
-  npm run build:lib:dev
-  npm run playground
+npm run build:lib:dev
+npm run playground
 ```
 
 ## Related
 
 Here are some related projects
 
-[shadcn](https://ui.shadcn.com/)
+[Tiptap](https://tiptap.dev)
 
-[tiptap](https://tiptap.dev)
+[Shadcn](https://ui.shadcn.com/)
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](./LICENSE)
