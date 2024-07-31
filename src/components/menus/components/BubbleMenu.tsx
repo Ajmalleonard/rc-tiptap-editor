@@ -88,25 +88,24 @@ const BubbleMenuImage = (props: IPropsBubbleMenu) => {
         editor={props?.editor}
         tippyOptions={tippyOptions as any}
       >
-        <div
-          className='border border-neutral-200 dark:border-neutral-800 px-3 py-2 transition-all select-none pointer-events-auto shadow-sm rounded-sm w-auto bg-background'
-          style={{
-            pointerEvents: props?.disabled ? 'none' : 'auto',
-          }}
-        >
-          <div className='flex items-center flex-nowrap whitespace-nowrap h-[26px] justify-start relative'>
-            {items?.map((item: any, key: any) => {
-              return (
-                <ItemA
-                  key={`bubbleMenu-image-${key}`}
-                  item={item}
-                  disabled={props.disabled}
-                  editor={props.editor}
-                />
-              );
-            })}
+        {items?.length ? (
+          <div className='border border-neutral-200 dark:border-neutral-800 px-3 py-2 transition-all select-none pointer-events-auto shadow-sm rounded-sm w-auto bg-background'>
+            <div className='flex items-center flex-nowrap whitespace-nowrap h-[26px] justify-start relative'>
+              {items?.map((item: any, key: any) => {
+                return (
+                  <ItemA
+                    key={`bubbleMenu-image-${key}`}
+                    item={item}
+                    disabled={props.disabled}
+                    editor={props.editor}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <></>
+        )}
       </BubbleMenuReact>
     </>
   );
@@ -147,20 +146,24 @@ const BubbleMenuVideo = (props: IPropsBubbleMenu) => {
         editor={props?.editor}
         tippyOptions={tippyOptions as any}
       >
-        <div className='border border-neutral-200 dark:border-neutral-800 px-3 py-2 transition-all select-none pointer-events-auto shadow-sm rounded-sm w-auto bg-background'>
-          <div className='flex items-center flex-nowrap whitespace-nowrap h-[26px] justify-start relative'>
-            {items?.map((item: any, key: any) => {
-              return (
-                <ItemA
-                  key={`bubbleMenu-video-${key}`}
-                  item={item}
-                  disabled={props.disabled}
-                  editor={props.editor}
-                />
-              );
-            })}
+        {items?.length ? (
+          <div className='border border-neutral-200 dark:border-neutral-800 px-3 py-2 transition-all select-none pointer-events-auto shadow-sm rounded-sm w-auto bg-background'>
+            <div className='flex items-center flex-nowrap whitespace-nowrap h-[26px] justify-start relative'>
+              {items?.map((item: any, key: any) => {
+                return (
+                  <ItemA
+                    key={`bubbleMenu-video-${key}`}
+                    item={item}
+                    disabled={props.disabled}
+                    editor={props.editor}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
+        ) : (
+          <></>
+        )}
       </BubbleMenuReact>
     </>
   );
