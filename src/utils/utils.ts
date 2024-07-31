@@ -40,8 +40,12 @@ export const isFunction = (value: unknown): boolean => typeof value === 'functio
  * @returns {boolean} - Returns true if the specified extension method is present, otherwise returns false.
  */
 export function hasExtension(editor: Editor, name: string): boolean {
+  if (!editor) {
+    return false;
+  }
+
   // Retrieve the extension manager of the editor, defaulting to an empty array if it doesn't exist
-  const { extensions = [] } = editor.extensionManager ?? {};
+  const { extensions = [] } = editor?.extensionManager ?? {};
 
   // Check if the extension method with the specified name is present in the extension manager
   const find = extensions.find((i) => i.name === name);

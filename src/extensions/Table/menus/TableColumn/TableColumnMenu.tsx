@@ -11,9 +11,9 @@ import { EditorView } from '@tiptap/pm/view';
 import { BubbleMenu } from '@tiptap/react';
 
 import ActionButton from '@/components/ActionButton';
-import { useLocale } from '@/locales';
 import HighlightActionButton from '@/extensions/Highlight/components/HighlightActionButton';
 import { analyzeCellSelection, isColumnGripSelected } from '@/extensions/Table/utils';
+import { useLocale } from '@/locales';
 
 interface IPropsTableColumnMenu {
   editor: any;

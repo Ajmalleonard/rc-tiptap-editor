@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
       outDir: 'lib',
       lib: {
         entry: path.resolve(__dirname, 'src/index.tsx'),
-        name: 'RcTiptapEditor',
+        formats: ['es', 'cjs'],
       },
       rollupOptions: {
         output: {
@@ -49,7 +49,7 @@ export default defineConfig(({ mode }) => {
             'react-dom': 'react-dom',
           },
         },
-        external: ['react', 'react-dom'],
+        external: ['react', 'react-dom', 'react/jsx-runtime'],
       },
     },
   };
