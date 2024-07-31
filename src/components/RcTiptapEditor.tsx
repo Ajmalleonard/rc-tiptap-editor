@@ -131,7 +131,7 @@ function RcTiptapEditor(props: IProps, ref: any) {
 
         <ContentMenu editor={editor} disabled={props?.disabled} />
 
-        <LinkBubbleMenu editor={editor} />
+        <LinkBubbleMenu editor={editor} disabled={props?.disabled} />
         {/* {!props?.hideBubble && (
           <BubbleMenu editor={editor as any} disabled={props?.disableBubble} />
         )} */}

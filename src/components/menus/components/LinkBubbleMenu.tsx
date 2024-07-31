@@ -64,17 +64,23 @@ const LinkBubbleMenu = (props: any) => {
           },
         }}
       >
-        {showEdit ? (
-          <LinkEditBlock onSetLink={onSetLink} editor={props?.editor} />
+        {props?.disabled ? (
+          <></>
         ) : (
-          <LinkViewBlock
-            editor={props?.editor}
-            onClear={unSetLink}
-            onEdit={() => {
-              setShowEdit(true);
-            }}
-            link={link}
-          />
+          <>
+            {showEdit ? (
+              <LinkEditBlock onSetLink={onSetLink} editor={props?.editor} />
+            ) : (
+              <LinkViewBlock
+                editor={props?.editor}
+                onClear={unSetLink}
+                onEdit={() => {
+                  setShowEdit(true);
+                }}
+                link={link}
+              />
+            )}
+          </>
         )}
       </BubbleMenu>
     </>
