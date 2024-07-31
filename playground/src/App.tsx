@@ -105,7 +105,6 @@ const extensions = [
   Code,
   // ImportWord.configure({
   //   upload: (files: File[]) => {
-  //     console.log('files', files);
   //     const f = files.map((file) => ({
   //       src: URL.createObjectURL(file),
   //       alt: file.name,

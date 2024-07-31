@@ -107,7 +107,7 @@ const CreateTablePopover = (props: IPropsCreateTablePopover) => {
                         onMouseOver={() => selectTableGridSize(row, col)}
                         onMouseDown={() => onMouseDown(row, col)}
                       >
-                        <div className='w-4 h-4 p-1 border rounded-[2px] box-border'></div>
+                        <div className='w-4 h-4 p-1 border rounded-[2px] box-border border-solid'></div>
                       </div>
                     );
                   })}

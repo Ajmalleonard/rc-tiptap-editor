@@ -35,9 +35,9 @@ class Locale {
 
   set lang(lang: string) {
     if (!this.isLangSupported(lang)) {
-      console.warn(
-        `Can't find the current language "${lang}", Using language "${DEFAULT_LOCALE.lang}" by default`,
-      );
+      // console.warn(
+      //   `Can't find the current language "${lang}", Using language "${DEFAULT_LOCALE.lang}" by default`,
+      // );
       return;
     }
 

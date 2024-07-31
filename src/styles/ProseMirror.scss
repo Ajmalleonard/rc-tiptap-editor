@@ -239,7 +239,7 @@
 
     td,
     th {
-      @apply border border-black/10 min-w-[100px] p-2 relative text-left align-top;
+      @apply border border-black/10 border-solid min-w-[100px] p-2 relative text-left align-top;
       @apply dark:border-white/20;
 
       &:first-of-type:not(a) {
