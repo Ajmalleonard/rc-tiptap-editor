@@ -182,11 +182,9 @@ Start the Demo server
 
 Here are some related projects
 
-[shadcn-vue](https://www.shadcn-vue.com/)
+[shadcn](https://ui.shadcn.com/)
 
 [tiptap](https://tiptap.dev)
-
-[iconify](https://icon-sets.iconify.design)
 
 ## License
 
