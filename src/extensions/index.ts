@@ -96,5 +96,5 @@ export type { FormatPainterOptions } from './FormatPainter';
 // export { ImportWord } from './ImportWord';
 // export type { ImportWordOptions } from './ImportWord';
 
-export { Columns } from './MultiColumn';
+export { Columns, ColumnToolbar } from './MultiColumn';
 export type { ColumnsOptions } from './MultiColumn';

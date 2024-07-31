@@ -23,6 +23,7 @@ import { TextStyle } from '@tiptap/extension-text-style';
 // import { NODE_TYPE_MENU } from '@/constants';
 // import { defaultBubbleList, generateBubbleTypeMenu } from '@/components/menus/bubble';
 // import { NODE_TYPE_MENU } from '@/constants';
+// import { NODE_TYPE_MENU } from '@/constants';
 import { Document } from '@/extensions/Document';
 import { Selection } from '@/extensions/Selection';
 import { TextBubble, TextBubbleOptions } from '@/extensions/TextBubble';
@@ -155,9 +156,10 @@ export const BaseKit = Extension.create<BaseKitOptions>({
   //       list: NODE_TYPE_MENU,
   //       defaultBubbleList,
   //       button: ({ editor, extension, t }: any) => {
+  //         // eslint-disable-next-line @typescript-eslint/no-unused-vars
   //         const { list = {}, defaultBubbleList } = extension.options?.bubble ?? {};
   //         const defaultList = defaultBubbleList?.(editor) ?? [];
-  //         return generateBubbleTypeMenu(list, defaultList, {
+  //         return generateBubbleTypeMenu({}, defaultList, {
   //           editor,
   //           extension,
   //           t,

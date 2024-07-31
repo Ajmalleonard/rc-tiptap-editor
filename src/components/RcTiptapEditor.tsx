@@ -6,6 +6,7 @@ import { AnyExtension, Editor as CoreEditor } from '@tiptap/core';
 import { useEditor, EditorContent } from '@tiptap/react';
 import { differenceBy, throttle } from 'lodash-unified';
 
+import { BubbleMenuImage, BubbleMenuVideo } from '@/components/menus/components/BubbleMenu';
 import ContentMenu from '@/components/menus/components/ContentMenu';
 import LinkBubbleMenu from '@/components/menus/components/LinkBubbleMenu';
 import Toolbar from '@/components/Toolbar';
@@ -132,9 +133,12 @@ function RcTiptapEditor(props: IProps, ref: any) {
         <ContentMenu editor={editor} disabled={props?.disabled} />
 
         <LinkBubbleMenu editor={editor} disabled={props?.disabled} />
-        {/* {!props?.hideBubble && (
-          <BubbleMenu editor={editor as any} disabled={props?.disableBubble} />
-        )} */}
+        {!props?.hideBubble && (
+          <>
+            <BubbleMenuImage editor={editor as any} disabled={props?.disabled} />
+            <BubbleMenuVideo editor={editor as any} disabled={props?.disabled} />
+          </>
+        )}
 
         <div className='flex flex-col w-full max-h-full'>
           {<Toolbar editor={editor} disabled={props?.disabled} />}

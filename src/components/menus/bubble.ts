@@ -3,7 +3,7 @@ import type { Editor } from '@tiptap/react';
 
 import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants';
 import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/types';
-import { useLocale } from '@/locales';
+import { localeActions } from '@/locales';
 import ActionButton from '@/components/ActionButton';
 
 /** Represents the size types for bubble images or videos */
@@ -67,7 +67,7 @@ export interface BubbleOptions<T> {
   /** The menu of bubble types for each node type. */
   list: NodeTypeMenu;
   /** The default list of bubble types. */
-  defaultBubbleList: typeof defaultBubbleList;
+  defaultBubbleList: any;
   /** The function to generate a bubble menu. */
   button: BubbleView<T>;
 }
@@ -84,7 +84,7 @@ const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
     type: `image-${size}`,
     component: ActionButton,
     componentProps: {
-      tooltip: `editor.${size.replace('-', '.')}.tooltip`,
+      tooltip: localeActions.t(`editor.${size.replace('-', '.')}.tooltip`),
       icon: icons[i],
       action: () => editor.commands.updateImage({ width: IMAGE_SIZE[size] }),
       isActive: () => editor.isActive('image', { width: IMAGE_SIZE[size] }),
@@ -93,7 +93,6 @@ const imageSizeMenus = (editor: Editor): BubbleMenuItem[] => {
 };
 
 const imageAlignMenus = (editor: Editor): BubbleMenuItem[] => {
-  const { t } = useLocale();
   const types: ImageAlignments[] = ['left', 'center', 'right'];
   const iconMap: any = {
     left: 'AlignLeft',
@@ -104,7 +103,7 @@ const imageAlignMenus = (editor: Editor): BubbleMenuItem[] => {
     type: `image-${k}`,
     component: ActionButton,
     componentProps: {
-      tooltip: t(`editor.textalign.${k}.tooltip`),
+      tooltip: localeActions.t(`editor.textalign.${k}.tooltip`),
       icon: iconMap[k],
       action: () => editor.commands.setTextAlign(k),
       isActive: () => editor.isActive({ textAlign: k }) || false,
@@ -125,23 +124,38 @@ const videoSizeMenus = (editor: Editor): BubbleMenuItem[] => {
     type: `video-${size}`,
     component: ActionButton,
     componentProps: {
-      tooltip: `editor.${size.replace('-', '.')}.tooltip`,
+      tooltip: localeActions.t(`editor.${size.replace('-', '.')}.tooltip`),
       icon: icons[i],
       action: () => editor.commands.updateVideo({ width: VIDEO_SIZE[size] }),
       isActive: () => editor.isActive('video', { width: VIDEO_SIZE[size] }),
     },
   }));
 };
-export const defaultBubbleList = (editor: Editor): BubbleMenuItem[] => [
+export const getBubbleImage = (editor: Editor): BubbleMenuItem[] => [
   ...imageSizeMenus(editor),
-  ...videoSizeMenus(editor),
   ...imageAlignMenus(editor),
   {
     type: 'remove',
     component: ActionButton,
     componentProps: {
       editor,
-      tooltip: 'editor.remove',
+      tooltip: localeActions.t('editor.remove'),
+      icon: 'Trash2',
+      action: () => {
+        const { state, dispatch } = editor.view;
+        deleteSelection(state, dispatch);
+      },
+    },
+  },
+];
+export const getBubbleVideo = (editor: Editor): BubbleMenuItem[] => [
+  ...videoSizeMenus(editor),
+  {
+    type: 'remove',
+    component: ActionButton,
+    componentProps: {
+      editor,
+      tooltip: localeActions.t('editor.remove'),
       icon: 'Trash2',
       action: () => {
         const { state, dispatch } = editor.view;

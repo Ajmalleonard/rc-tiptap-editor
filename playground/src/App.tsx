@@ -32,6 +32,7 @@ import RcTiptapEditor, {
   Blockquote,
   SlashCommand,
   HorizontalRule,
+  ColumnToolbar,
   // Fullscreen,
   CodeBlock,
   Table,
@@ -101,9 +102,10 @@ const extensions = [
   SlashCommand,
   HorizontalRule,
   // Fullscreen.configure({ spacer: true }),
-  CodeBlock.configure({ lowlight: createLowlight(common) }),
-  Table,
   Code,
+  CodeBlock.configure({ lowlight: createLowlight(common) }),
+  ColumnToolbar,
+  Table,
   // ImportWord.configure({
   //   upload: (files: File[]) => {
   //     const f = files.map((file) => ({
