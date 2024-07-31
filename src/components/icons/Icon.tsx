@@ -4,7 +4,7 @@ import React from 'react';
 interface IPropsIcon {
   name: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e?: any) => void;
 }
 
 const Icon = (props: IPropsIcon) => {

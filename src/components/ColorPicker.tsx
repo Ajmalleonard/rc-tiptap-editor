@@ -60,9 +60,9 @@ const ColorPicker = (props: IPropsColorPicker) => {
       setRecentColor(color);
     }
   }
-  const triggerHtml5Color = () => {
-    html5Color.current?.click();
-  };
+  // const triggerHtml5Color = () => {
+  //   html5Color.current?.click();
+  // };
 
   return (
     <Popover>

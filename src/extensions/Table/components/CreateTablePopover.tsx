@@ -89,7 +89,7 @@ const CreateTablePopover = (props: IPropsCreateTablePopover) => {
           {props?.children}
         </button>
       </PopoverTrigger>
-      <PopoverContent className='w-full' align='start' side='bottom'>
+      <PopoverContent className='w-full !p-2' align='start' side='bottom'>
         <div className='table-grid-size-editor p-0'>
           <div className='flex flex-col flex-wrap gap-1 justify-between'>
             {createArray(tableGridSize?.rows)?.map((row: any) => {

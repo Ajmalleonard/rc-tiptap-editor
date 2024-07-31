@@ -1,6 +1,6 @@
 {
   "name": "rc-tiptap-editor",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./lib/rc-tiptap-editor.js",
   "module": "./lib/rc-tiptap-editor.mjs",
   "types": "./lib/index.d.ts",
@@ -44,7 +44,7 @@
     "release": "bumpp -r",
     "dev": "vite",
     "playground": "pnpm --dir ./playground run dev",
-    "build:lib": "tsc --p ./tsconfig-build.json && vite build",
+    "build:lib": "vite build",
     "build:lib:dev": "vite build --watch",
     "build:playground": "pnpm build:lib && pnpm --dir ./playground run build"
   },

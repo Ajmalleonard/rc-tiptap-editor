@@ -136,7 +136,7 @@ const DEFAULT = '';
 const App = () => {
   const [content, setContent] = useState(DEFAULT);
 
-  const onValueChange = (value: any) => {
+  const onChangeContent = (value: any) => {
     setContent(value);
   };
 
@@ -144,7 +144,7 @@ const App = () => {
     <RcTiptapEditor
       output='html'
       content={content as any}
-      onChange={onValueChange}
+      onChangeContent={onChangeContent}
       extensions={extensions}
     />
   );

@@ -21,6 +21,8 @@ import { TextStyle } from '@tiptap/extension-text-style';
 
 // import { defaultBubbleList, generateBubbleTypeMenu } from '@/components/menus/bubble';
 // import { NODE_TYPE_MENU } from '@/constants';
+// import { defaultBubbleList, generateBubbleTypeMenu } from '@/components/menus/bubble';
+// import { NODE_TYPE_MENU } from '@/constants';
 import { Document } from '@/extensions/Document';
 import { Selection } from '@/extensions/Selection';
 import { TextBubble, TextBubbleOptions } from '@/extensions/TextBubble';
@@ -153,9 +155,9 @@ export const BaseKit = Extension.create<BaseKitOptions>({
   //       list: NODE_TYPE_MENU,
   //       defaultBubbleList,
   //       button: ({ editor, extension, t }: any) => {
-  //         // const { list = {}, defaultBubbleList } = extension.options?.bubble ?? {};
+  //         const { list = {}, defaultBubbleList } = extension.options?.bubble ?? {};
   //         const defaultList = defaultBubbleList?.(editor) ?? [];
-  //         return generateBubbleTypeMenu({}, defaultList, {
+  //         return generateBubbleTypeMenu(list, defaultList, {
   //           editor,
   //           extension,
   //           t,

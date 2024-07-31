@@ -125,14 +125,22 @@ const ContentMenu = (props: any) => {
     <>
       <div
         className={'[transition-property:top,_left] ease-in-out duration-200 ' + props?.className}
+        style={{
+          opacity: props?.disabled ? 0 : 1,
+        }}
         ref={dragElement}
       >
         <div className='flex items-center gap-0.5 [transition-property:top,_left] ease-in-out duration-200'>
           <DropdownMenu open={menuOpen} onOpenChange={handleMenuOpenChange}>
-            <DropdownMenuTrigger>
+            <DropdownMenuTrigger disabled={props?.disabled}>
               <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant='ghost' size='icon' className='w-7 h-7 cursor-grab'>
+                <TooltipTrigger asChild disabled={props?.disabled}>
+                  <Button
+                    variant='ghost'
+                    size='icon'
+                    className='w-7 h-7 cursor-grab'
+                    disabled={props?.disabled}
+                  >
                     <Icon name='Grip' className='text-sm dark:text-neutral-200 text-neutral-600' />
                   </Button>
                 </TooltipTrigger>

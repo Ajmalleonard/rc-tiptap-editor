@@ -37,7 +37,7 @@ interface IProps {
   maxHeight?: string | number;
   editorClass?: string | string[] | Record<string, any>;
   contentClass?: string | string[] | Record<string, any>;
-  onChange?: (val: any) => void;
+  onChangeContent?: (val: any) => void;
 }
 
 function RcTiptapEditor(props: IProps, ref: any) {
@@ -55,6 +55,22 @@ function RcTiptapEditor(props: IProps, ref: any) {
     });
     return [...exts, ...diff].map((k, i) => k.configure({ sort: i }));
   }, [extensions]);
+
+  const editor = useEditor({
+    extensions: sortExtensions,
+    content,
+    onUpdate: ({ editor }) => {
+      onValueChange(editor);
+    },
+  });
+
+  useEffect(() => {
+    document.body.classList.toggle('dark', props.dark);
+  }, [props.dark]);
+
+  useEffect(() => {
+    editor?.setEditable(!props?.disabled);
+  }, [editor, props?.disabled]);
 
   function getOutput(editor: CoreEditor, output: IProps['output']) {
     // eslint-disable-next-line unicorn/consistent-destructuring
@@ -86,16 +102,8 @@ function RcTiptapEditor(props: IProps, ref: any) {
   const onValueChange = throttle((editor) => {
     const output = getOutput(editor, props.output as any);
 
-    props?.onChange?.(output as any);
+    props?.onChangeContent?.(output as any);
   }, EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME);
-
-  const editor = useEditor({
-    extensions: sortExtensions,
-    content,
-    onUpdate: ({ editor }) => {
-      onValueChange(editor);
-    },
-  });
 
   useImperativeHandle(ref, () => {
     return {
@@ -121,7 +129,7 @@ function RcTiptapEditor(props: IProps, ref: any) {
         <ColumnsMenu editor={editor} />
         <TableBubbleMenu editor={editor} />
 
-        <ContentMenu editor={editor} />
+        <ContentMenu editor={editor} disabled={props?.disabled} />
 
         <LinkBubbleMenu editor={editor} />
         {/* {!props?.hideBubble && (
@@ -129,7 +137,7 @@ function RcTiptapEditor(props: IProps, ref: any) {
         )} */}
 
         <div className='flex flex-col w-full max-h-full'>
-          <Toolbar editor={editor} />
+          {<Toolbar editor={editor} disabled={props?.disabled} />}
           <EditorContent className={`relative ${props?.contentClass || ''}`} editor={editor} />
           <div className='flex justify-between border-t p-3 items-center'>
             {hasExtensionValue && (

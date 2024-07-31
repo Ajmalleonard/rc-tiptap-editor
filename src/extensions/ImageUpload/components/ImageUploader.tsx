@@ -47,10 +47,12 @@ const ImageUploader = (props: any) => {
       .focus()
       .run();
   }
-  function handleDelete() {
+  function handleDelete(e?: any) {
+    e?.preventDefault();
     props.deleteNode();
   }
-  function handleClick() {
+  function handleClick(e: any) {
+    e.preventDefault();
     fileInput.current?.click();
   }
 

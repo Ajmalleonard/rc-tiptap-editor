@@ -6,6 +6,7 @@ import { DEFAULT_LANG_VALUE } from '@/constants';
 import mitt, { EventType } from '@/utils/mitt';
 
 import en from './en';
+import vi from './vi';
 
 interface LocaleInterface {
   lang: string;
@@ -20,6 +21,7 @@ export const DEFAULT_LOCALE: LocaleInterface = {
   lang: DEFAULT_LANG_VALUE,
   message: {
     en,
+    vi,
   },
 };
 
@@ -35,9 +37,9 @@ class Locale {
 
   set lang(lang: string) {
     if (!this.isLangSupported(lang)) {
-      // console.warn(
-      //   `Can't find the current language "${lang}", Using language "${DEFAULT_LOCALE.lang}" by default`,
-      // );
+      console.warn(
+        `Can't find the current language "${lang}", Using language "${DEFAULT_LOCALE.lang}" by default`,
+      );
       return;
     }
 
@@ -134,3 +136,4 @@ export default locale;
 export { Locale, useLocale, localeActions };
 
 export { default as en } from './en';
+export { default as vi } from './vi';

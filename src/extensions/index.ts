@@ -61,9 +61,9 @@ export type { HistoryOptions } from './History';
 export { BaseKit } from './BaseKit';
 export type { BaseKitOptions } from './BaseKit';
 
-// export { SubAndSuperScript } from './Subscript';
+export { SubAndSuperScript } from './Subscript';
 
-// export type { SubAndSuperScriptOptions } from './Subscript';
+export type { SubAndSuperScriptOptions } from './Subscript';
 export type { MoreMarkOptions } from './MoreMark';
 export { MoreMark } from './MoreMark';
 
@@ -89,8 +89,6 @@ export { VideoUpload } from './VideoUpload';
 export { Table } from './Table';
 
 export type { TableOptions } from './Table';
-
-// // export { AI } from './Ai';
 
 export { FormatPainter } from './FormatPainter';
 export type { FormatPainterOptions } from './FormatPainter';
