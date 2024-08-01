@@ -121,6 +121,36 @@ const ContentMenu = (props: any) => {
     };
   }, []);
 
+  function handleAdd() {
+    if (currentNodePos !== -1) {
+      const currentNodeSize = currentNode?.nodeSize || 0;
+      const insertPos = currentNodePos + currentNodeSize;
+      const currentNodeIsEmptyParagraph =
+        currentNode?.type.name === 'paragraph' && currentNode?.content?.size === 0;
+      const focusPos = currentNodeIsEmptyParagraph ? currentNodePos + 2 : insertPos + 2;
+      props.editor
+        .chain()
+        .command(({ dispatch, tr, state }: any) => {
+          if (dispatch) {
+            if (currentNodeIsEmptyParagraph) {
+              tr.insertText('/', currentNodePos, currentNodePos + 1);
+            } else {
+              tr.insert(
+                insertPos,
+                state.schema.nodes.paragraph.create(null, [state.schema.text('/')]),
+              );
+            }
+
+            return dispatch(tr);
+          }
+
+          return true;
+        })
+        .focus(focusPos)
+        .run();
+    }
+  }
+
   return (
     <>
       <div
@@ -131,6 +161,15 @@ const ContentMenu = (props: any) => {
         ref={dragElement}
       >
         <div className='flex items-center gap-0.5 [transition-property:top,_left] ease-in-out duration-200'>
+          <Button
+            variant='ghost'
+            size='icon'
+            className='w-7 h-7 cursor-grab'
+            disabled={props?.disabled}
+            onClick={handleAdd}
+          >
+            <Icon name='Plus' className='text-lg text-neutral-600 dark:text-neutral-200' />
+          </Button>
           <DropdownMenu open={menuOpen} onOpenChange={handleMenuOpenChange}>
             <DropdownMenuTrigger disabled={props?.disabled}>
               <Tooltip>

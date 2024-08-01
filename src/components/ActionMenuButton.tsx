@@ -23,7 +23,7 @@ const ActionMenuButton = (props: IPropsActionMenuButton) => {
     <Tooltip>
       <TooltipTrigger>
         <Button
-          className='h-[32px] px-[5px] py-0 min-w-24 max-w-32'
+          className='h-[32px] px-[5px] py-0 min-w-24 max-w-32 overflow-hidden'
           variant='ghost'
           disabled={props?.disabled}
         >

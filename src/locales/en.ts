@@ -17,6 +17,7 @@ const locale: Record<string, string> = {
   'editor.slash.insert': 'Insert',
   'editor.slash.embed': 'Embed Services',
   'editor.content': 'Please input content',
+  'editor.textStyle.tooltip': 'Font Family',
   'editor.moremark': 'More Text Styles',
   'editor.size.small.tooltip': 'Small',
   'editor.size.medium.tooltip': 'Medium',

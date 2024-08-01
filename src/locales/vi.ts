@@ -19,6 +19,7 @@ const locale: Record<string, string> = {
   'editor.content': 'Vui lòng nhập nội dung',
   'editor.moremark': 'Nhiều kiểu văn bản hơn',
   'editor.size.small.tooltip': 'Nhỏ',
+  'editor.textStyle.tooltip': 'Kiểu văn bản',
   'editor.size.medium.tooltip': 'Trung bình',
   'editor.size.large.tooltip': 'Lớn',
   'editor.bold.tooltip': 'Đậm',

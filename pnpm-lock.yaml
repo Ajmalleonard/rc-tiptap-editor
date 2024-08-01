@@ -81,7 +81,7 @@ importers:
         specifier: ^2.3.1
         version: 2.5.7(@tiptap/core@2.5.7(@tiptap/pm@2.5.7))(@tiptap/pm@2.5.7)
       '@tiptap/extension-font-family':
-        specifier: ^2.3.0
+        specifier: ^2.5.7
         version: 2.5.7(@tiptap/core@2.5.7(@tiptap/pm@2.5.7))(@tiptap/extension-text-style@2.5.7(@tiptap/core@2.5.7(@tiptap/pm@2.5.7)))
       '@tiptap/extension-gapcursor':
         specifier: ^2.3.1

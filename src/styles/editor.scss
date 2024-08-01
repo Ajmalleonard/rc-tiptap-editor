@@ -160,27 +160,27 @@
     [data-type='horizontalRule'] {
       @apply transition-all duration-100 ease-in-out cursor-pointer;
 
-      &.ProseMirror-selectednode {
-        @apply bg-black/5 dark:bg-white/10;
+      // &.ProseMirror-selectednode {
+      //   @apply bg-black/5 dark:bg-white/10;
 
-        hr {
-          @apply border-t-black/30 dark:border-t-white/30;
-        }
-      }
+      //   hr {
+      //     @apply border-t-black/30 dark:border-t-white/30;
+      //   }
+      // }
 
-      &:hover:not(&.ProseMirror-selectednode) {
-        @apply bg-black/5;
-        @apply dark:bg-white/10;
-      }
+      // &:hover:not(&.ProseMirror-selectednode) {
+      //   @apply bg-black/5;
+      //   @apply dark:bg-white/10;
+      // }
     }
-    :not(.dragging) .ProseMirror-selectednode {
-      @apply outline-none  bg-black/10 dark:bg-white/20 shadow-none transition-colors;
-    }
+    // :not(.dragging) .ProseMirror-selectednode {
+    //   @apply outline-none  bg-black/10 dark:bg-white/20 shadow-none transition-colors;
+    // }
 
-    .selection:not(.image-view),
-    *:not(.image-view)::selection {
-      @apply bg-black/10 dark:bg-white/20;
-    }
+    // .selection:not(.image-view),
+    // *:not(.image-view)::selection {
+    //   @apply bg-black/10 dark:bg-white/20;
+    // }
 
     // .is-empty::before {
     //   content: attr(data-placeholder);
