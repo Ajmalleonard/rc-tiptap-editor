@@ -30,7 +30,7 @@ for (let i = 0; i < colorsArray.length; i += 10) {
 }
 
 const AddMoreColor = ({ setColor }: any) => {
-  const [colorMore, setColorMore] = useState('#ffffff');
+  const [colorMore, setColorMore] = useState('#000000');
   const [openColorMore, setOpenColorMore] = useState(false);
   const { t } = useLocale();
 
@@ -57,15 +57,23 @@ const AddMoreColor = ({ setColor }: any) => {
         <div className='flex flex-col items-center justify-center'>
           <HexColorPicker color={colorMore} onChange={setColorMore} />
 
-          <Input className='mt-[8px] w-full' value={colorMore} disabled />
+          <Input
+            className='mt-[8px] w-full'
+            type='text'
+            onChange={(e) => {
+              e.preventDefault();
+              setColorMore(`#${e.target.value}`);
+            }}
+            value={colorMore.slice(1)}
+          />
         </div>
 
         <Separator className='my-[10px]' />
         <Button
           onClick={(e: any) => {
             e.preventDefault();
-            setOpenColorMore(false);
             setColor(colorMore);
+            setOpenColorMore(false);
           }}
           className='w-full'
         >
