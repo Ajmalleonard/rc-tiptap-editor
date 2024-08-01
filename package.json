@@ -1,6 +1,6 @@
 {
   "name": "rc-tiptap-editor",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "./lib/rc-tiptap-editor.js",
   "module": "./lib/rc-tiptap-editor.mjs",
   "types": "./lib/index.d.ts",
@@ -150,5 +150,21 @@
   "peerDependencies": {
     "react": ">= 17.0.0",
     "react-dom": ">= 17.0.0"
-  }
+  },
+  "keywords": [
+    "react",
+    "tiptap",
+    "editor",
+    "wysiwyg",
+    "rich-text",
+    "rc-tiptap-editor",
+    "tiptap-editor",
+    "tiptap-react",
+    "tiptap-react-editor",
+    "tiptap-react-wysiwyg",
+    "tiptap-react-rich-text",
+    "tiptap-react-rc-editor",
+    "tiptap-react-rc-wysiwyg",
+    "tiptap-react-rc-rich-text"
+  ]
 }

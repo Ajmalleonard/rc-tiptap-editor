@@ -33,13 +33,10 @@ import RcTiptapEditor, {
   SlashCommand,
   HorizontalRule,
   ColumnToolbar,
-  // Fullscreen,
   FontFamily,
   CodeBlock,
   Table,
   Code,
-  // ImportWord,
-  // ExportWord,
   locale,
 } from 'rc-tiptap-editor';
 
@@ -86,7 +83,7 @@ const extensions = [
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(URL.createObjectURL(files));
-        }, 1000);
+        }, 500);
       });
     },
   }),

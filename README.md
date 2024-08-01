@@ -29,6 +29,13 @@
 - I18n support(`en`, `vi`)
 - Create your own extensions
 - Tailwind CSS support
+- Dark mode support
+- Command support
+- Table support
+- Video support
+- Image support
+- Image upload support
+- Video upload support
 
 ## Installation
 
@@ -41,8 +48,6 @@ yarn add rc-tiptap-editor
 ## Usage
 
 ```tsx
-import { createLowlight, common } from 'lowlight';
-
 import RcTiptapEditor, {
   BaseKit,
   History,
@@ -72,9 +77,12 @@ import RcTiptapEditor, {
   Blockquote,
   SlashCommand,
   HorizontalRule,
+  ColumnToolbar,
+  FontFamily,
   CodeBlock,
   Table,
   Code,
+  locale,
 } from 'rc-tiptap-editor';
 
 import 'rc-tiptap-editor/style.css';
@@ -92,6 +100,7 @@ const extensions = [
   Columns,
   FormatPainter,
   Clear,
+  FontFamily,
   Heading.configure({ spacer: true }),
   FontSize,
   Bold,
@@ -136,9 +145,10 @@ const extensions = [
   Blockquote,
   SlashCommand,
   HorizontalRule,
-  CodeBlock.configure({ lowlight: createLowlight(common) }),
-  Table,
   Code,
+  CodeBlock.configure({ lowlight: createLowlight(common) }),
+  ColumnToolbar,
+  Table,
 ];
 
 const DEFAULT = '';
@@ -156,9 +166,6 @@ const App = () => {
       content={content as any}
       onChangeContent={onChangeContent}
       extensions={extensions}
-      useEditorOptions={{
-        shouldRerenderOnTransaction: false,
-      }}
     />
   );
 };
