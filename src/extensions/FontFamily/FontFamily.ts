@@ -36,8 +36,8 @@ export const FontFamily = FontFamilyTiptap.extend<any>({
             action: () => editor.chain().focus().unsetFontFamily().run(),
             isActive: () => false,
             disabled: false,
-            font: 'Default',
-            title: t('editor.textStyle.tooltip'),
+            font: t('editor.fontFamily.default.tooltip'),
+            title: t('editor.fontFamily.tooltip'),
           });
         }
 
@@ -46,7 +46,7 @@ export const FontFamily = FontFamilyTiptap.extend<any>({
         return {
           component: FontFamilyButton,
           componentProps: {
-            tooltip: t('editor.textStyle.tooltip'),
+            tooltip: t('editor.fontFamily.tooltip'),
             disabled,
             items,
             editor,

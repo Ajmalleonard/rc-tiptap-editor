@@ -8,6 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useLocale } from '@/locales';
 import { ButtonViewReturnComponentProps } from '@/types';
 
 export interface Item {
@@ -34,6 +35,8 @@ interface Props {
 }
 
 const FontFamilyButton = (props: Props) => {
+  const { t, lang } = useLocale();
+
   const active = useMemo(() => {
     const find: any = props?.items?.find((k: any) => k.isActive());
 
@@ -44,13 +47,13 @@ const FontFamilyButton = (props: Props) => {
     }
     const item: Item = {
       title: props.tooltip as any,
-      font: 'Default',
+      font: t('editor.fontFamily.default.tooltip'),
       isActive: () => false,
       disabled: false,
       action: () => props.editor.chain().focus().unsetFontFamily().run(),
     };
     return item;
-  }, [props]);
+  }, [t, lang, props]);
 
   return (
     <DropdownMenu>
