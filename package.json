@@ -1,6 +1,6 @@
 {
   "name": "rc-tiptap-editor",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "./lib/rc-tiptap-editor.js",
   "module": "./lib/rc-tiptap-editor.mjs",
   "types": "./lib/index.d.ts",

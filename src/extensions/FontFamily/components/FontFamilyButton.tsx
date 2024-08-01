@@ -67,12 +67,17 @@ const FontFamilyButton = (props: Props) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className='w-full'>
         {props?.items?.map((item: any, index) => {
+          const style =
+            item.font === t('editor.fontFamily.default.tooltip') ? {} : { fontFamily: item.font };
+
           return (
             <Fragment key={index}>
               <DropdownMenuCheckboxItem checked={active?.font === item.font} onClick={item.action}>
-                <div className={`ml-1 h-full heading-${item.font}`}>{item.font}</div>
+                <div className={'ml-1 h-full'} style={style}>
+                  {item.font}
+                </div>
               </DropdownMenuCheckboxItem>
-              {item.font === 'Default' && <DropdownMenuSeparator />}
+              {item.font === t('editor.fontFamily.default.tooltip') && <DropdownMenuSeparator />}
             </Fragment>
           );
         })}

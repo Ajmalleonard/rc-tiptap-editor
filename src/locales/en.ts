@@ -18,7 +18,7 @@ const locale: Record<string, string> = {
   'editor.slash.embed': 'Embed Services',
   'editor.content': 'Please input content',
   'editor.fontFamily.tooltip': 'Font Family',
-  'editor.fontFamily.default.tooltip': 'Mặc định',
+  'editor.fontFamily.default.tooltip': 'Default',
   'editor.moremark': 'More Text Styles',
   'editor.size.small.tooltip': 'Small',
   'editor.size.medium.tooltip': 'Medium',
