@@ -2,9 +2,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable multiline-ternary */
 /* eslint-disable unicorn/consistent-destructuring */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { Plus } from 'lucide-react';
+import { HexColorPicker } from 'react-colorful';
+
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Separator } from '@/components/ui/separator';
 import { COLORS_LIST, DEFAULT_COLOR } from '@/constants';
 import { useLocale } from '@/locales';
 
@@ -23,14 +29,59 @@ for (let i = 0; i < colorsArray.length; i += 10) {
   chunkedColors.push(colorsArray.slice(i, i + 10));
 }
 
+const AddMoreColor = ({ setColor }: any) => {
+  const [colorMore, setColorMore] = useState('#ffffff');
+  const [openColorMore, setOpenColorMore] = useState(false);
+  const { t } = useLocale();
+
+  useEffect(() => {
+    return () => {
+      setOpenColorMore(false);
+    };
+  }, []);
+
+  return (
+    <Popover open={openColorMore}>
+      <PopoverTrigger asChild>
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            setOpenColorMore(true);
+          }}
+          className='text-sm hover:cursor-pointer hover:bg-accent py-1.5 px-1.5'
+        >
+          {t('editor.color.more')}...
+        </div>
+      </PopoverTrigger>
+      <PopoverContent>
+        <div className='flex flex-col items-center justify-center'>
+          <HexColorPicker color={colorMore} onChange={setColorMore} />
+
+          <Input className='mt-[8px] w-full' value={colorMore} disabled />
+        </div>
+
+        <Separator className='my-[10px]' />
+        <Button
+          onClick={(e: any) => {
+            e.preventDefault();
+            setOpenColorMore(false);
+            setColor(colorMore);
+          }}
+          className='w-full'
+        >
+          <Plus size={16} />
+        </Button>
+      </PopoverContent>
+    </Popover>
+  );
+};
+
 const ColorPicker = (props: IPropsColorPicker) => {
   const { t } = useLocale();
 
   const { highlight = false, disabled = false, selectedColor, setSelectedColor, onChange } = props;
 
   const [recentColorsStore, setRecentColorsStore] = useState<string[]>([]);
-
-  const html5Color = React.createRef<HTMLInputElement>();
 
   const setRecentColor = (color: string) => {
     const newRecentColors = [...recentColorsStore];
@@ -60,9 +111,6 @@ const ColorPicker = (props: IPropsColorPicker) => {
       setRecentColor(color);
     }
   }
-  // const triggerHtml5Color = () => {
-  //   html5Color.current?.click();
-  // };
 
   return (
     <Popover>
@@ -203,25 +251,7 @@ const ColorPicker = (props: IPropsColorPicker) => {
             </span>
           </div>
 
-          {/* <div className='relative'>
-            <div
-              className='text-sm hover:cursor-pointer hover:bg-accent py-1.5 px-1.5'
-              onClick={triggerHtml5Color}
-            >
-              {t('editor.color.more')}...
-            </div>
-            <input
-              type='color'
-              ref={html5Color}
-              onChange={(e: any) => {
-                setColor(e.target.value);
-              }}
-              className='absolute left-0 top-4'
-              style={{
-                visibility: 'hidden',
-              }}
-            />
-          </div> */}
+          <AddMoreColor setColor={setColor} />
         </div>
       </PopoverContent>
     </Popover>

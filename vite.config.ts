@@ -18,9 +18,6 @@ export default defineConfig(({ mode }) => {
         insertTypesEntry: true,
       }),
     ],
-    optimizeDeps: {
-      include: ['react'],
-    },
     resolve: {
       alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
     },
@@ -43,10 +40,10 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         output: {
-          exports: 'named',
-          globals: {
-            react: 'react',
-            'react-dom': 'react-dom',
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
           },
         },
         external: ['react', 'react-dom', 'react/jsx-runtime'],
