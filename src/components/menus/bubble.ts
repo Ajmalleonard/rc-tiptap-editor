@@ -5,6 +5,7 @@ import { IMAGE_SIZE, VIDEO_SIZE } from '@/constants';
 import type { ButtonViewParams, ButtonViewReturn, ExtensionNameKeys } from '@/types';
 import { localeActions } from '@/locales';
 import ActionButton from '@/components/ActionButton';
+import { Bold, Code, Color, Highlight, Italic, Link, Strike, Underline } from '@/extensions';
 
 /** Represents the size types for bubble images or videos */
 type BubbleImageOrVideoSizeType = 'size-small' | 'size-medium' | 'size-large';
@@ -148,6 +149,7 @@ export const getBubbleImage = (editor: Editor): BubbleMenuItem[] => [
     },
   },
 ];
+
 export const getBubbleVideo = (editor: Editor): BubbleMenuItem[] => [
   ...videoSizeMenus(editor),
   {
@@ -165,83 +167,18 @@ export const getBubbleVideo = (editor: Editor): BubbleMenuItem[] => [
   },
 ];
 
-/**
- * bubble menu
- * @template T
- * @param {NodeTypeMenu} list
- * @param {BubbleMenuItem[]} defaultList
- * @param {ButtonViewParams<T>} { editor, extension, t }
- * @return {*}  {BubbleTypeMenu}
- */
-export const generateBubbleTypeMenu = <T = any>(
-  list: NodeTypeMenu,
-  defaultList: BubbleMenuItem[],
-  { editor, extension, t }: ButtonViewParams<T>,
-): BubbleTypeMenu => {
-  const { extensions = [] } = editor.extensionManager;
-  const items: BubbleTypeMenu = {};
-
-  for (const node of Object.keys(list)) {
-    const nodeType = list[node as NodeTypeKey];
-    if (!nodeType) continue;
-
-    const _items: BubbleMenuItem[] = [];
-
-    for (const ext of nodeType) {
-      if (ext === 'divider') {
-        const lastItem = _items[_items.length - 1];
-        if (lastItem?.type === 'divider') continue;
-
-        _items.push({
-          type: 'divider',
-          component: undefined,
-          componentProps: {
-            editor,
-          },
-        });
-        continue;
-      }
-
-      const find = defaultList.find((k) => k.type === ext);
-      if (find) {
-        _items.push({
-          ...find,
-          componentProps: {
-            ...find.componentProps,
-            tooltip: find.componentProps.tooltip ? t(find.componentProps.tooltip) : undefined,
-          },
-          componentSlots: find.componentSlots,
-        });
-        continue;
-      }
-
-      const findExt = extensions.find((k) => k.name === ext);
-      if (findExt) {
-        const { button } = findExt.options as any;
-        const _button: ButtonViewReturn = button({
-          editor,
-          extension: findExt,
-          t,
-        });
-
-        _items.push({
-          type: ext,
-          component: _button.component,
-          componentProps: _button.componentProps,
-          componentSlots: _button.componentSlots,
-        });
-        continue;
-      }
-    }
-
-    const lastItem = _items[_items.length - 1];
-    const fristItem = _items[0];
-
-    if (lastItem?.type === 'divider') _items.pop();
-    if (fristItem?.type === 'divider') _items.shift();
-
-    items[node as NodeTypeKey] = _items;
-  }
-
-  return items;
-};
+export const getBubbleText = (editor: Editor, t: any) => [
+  Bold.configure().options.button({ editor, t }),
+  Italic.configure().options.button({ editor, t }),
+  Underline.configure().options.button({ editor, t }),
+  Strike.configure().options.button({ editor, t }),
+  Code.configure().options.button({ editor, t }),
+  Link.configure().options.button({ editor, t }),
+  {
+    type: 'divider',
+    component: undefined,
+    componentProps: {},
+  },
+  Color.configure().options.button({ editor, t }),
+  Highlight.configure().options.button({ editor, t }),
+];

@@ -6,7 +6,7 @@ import { BubbleMenu } from '@tiptap/react';
 import LinkEditBlock from '@/extensions/Link/components/LinkEditBlock';
 import LinkViewBlock from '@/extensions/Link/components/LinkViewBlock';
 
-const LinkBubbleMenu = (props: any) => {
+const BubbleMenuLink = (props: any) => {
   const [showEdit, setShowEdit] = useState(false);
 
   const link = useMemo(() => {
@@ -87,4 +87,4 @@ const LinkBubbleMenu = (props: any) => {
   );
 };
 
-export default LinkBubbleMenu;
+export default BubbleMenuLink;

@@ -6,9 +6,10 @@ import { AnyExtension, Editor as CoreEditor } from '@tiptap/core';
 import { useEditor, EditorContent, UseEditorOptions } from '@tiptap/react';
 import { differenceBy, throttle } from 'lodash-unified';
 
-import { BubbleMenuImage, BubbleMenuVideo } from '@/components/menus/components/BubbleMenu';
+import BubbleMenuLink from '@/components/menus/components/BubbleMenuLink';
+import { BubbleMenuImage, BubbleMenuVideo } from '@/components/menus/components/BubbleMenuMedia';
+import BubbleMenuText from '@/components/menus/components/BubbleMenuText';
 import ContentMenu from '@/components/menus/components/ContentMenu';
-import LinkBubbleMenu from '@/components/menus/components/LinkBubbleMenu';
 import Toolbar from '@/components/Toolbar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants';
@@ -132,12 +133,12 @@ function RcTiptapEditor(props: IPropsRcTiptapEditor, ref: any) {
       <div className='rc-tiptap-editor rounded-[0.5rem] bg-background shadow overflow-hidden outline outline-1'>
         <ColumnsMenu editor={editor} />
         <TableBubbleMenu editor={editor} />
-
         <ContentMenu editor={editor} disabled={props?.disabled} />
 
-        <LinkBubbleMenu editor={editor} disabled={props?.disabled} />
         {!props?.hideBubble && (
           <>
+            <BubbleMenuLink editor={editor} disabled={props?.disabled} />
+            <BubbleMenuText editor={editor} disabled={props?.disabled} />
             <BubbleMenuImage editor={editor as any} disabled={props?.disabled} />
             <BubbleMenuVideo editor={editor as any} disabled={props?.disabled} />
           </>

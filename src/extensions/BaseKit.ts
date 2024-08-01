@@ -19,19 +19,11 @@ import { Text } from '@tiptap/extension-text';
 import type { TextStyleOptions } from '@tiptap/extension-text-style';
 import { TextStyle } from '@tiptap/extension-text-style';
 
-// import { defaultBubbleList, generateBubbleTypeMenu } from '@/components/menus/bubble';
-// import { NODE_TYPE_MENU } from '@/constants';
-// import { defaultBubbleList, generateBubbleTypeMenu } from '@/components/menus/bubble';
-// import { NODE_TYPE_MENU } from '@/constants';
-// import { NODE_TYPE_MENU } from '@/constants';
 import { Document } from '@/extensions/Document';
 import { Selection } from '@/extensions/Selection';
 import { TextBubble, TextBubbleOptions } from '@/extensions/TextBubble';
 import { TrailingNode, TrailingNodeOptions } from '@/extensions/TrailingNode';
 import { localeActions } from '@/locales';
-
-// import Iframe from './Iframe/Iframe';
-// import type { IframeOptions } from './Iframe/Iframe';
 
 /**
  * Represents the interface for options in the base toolkit.
@@ -149,25 +141,6 @@ export interface BaseKitOptions {
 
 export const BaseKit = Extension.create<BaseKitOptions>({
   name: 'base-kit',
-  // addOptions() {
-  //   return {
-  //     ...this.parent?.(),
-  //     bubble: {
-  //       list: NODE_TYPE_MENU,
-  //       defaultBubbleList,
-  //       button: ({ editor, extension, t }: any) => {
-  //         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //         const { list = {}, defaultBubbleList } = extension.options?.bubble ?? {};
-  //         const defaultList = defaultBubbleList?.(editor) ?? [];
-  //         return generateBubbleTypeMenu({}, defaultList, {
-  //           editor,
-  //           extension,
-  //           t,
-  //         });
-  //       },
-  //     },
-  //   };
-  // },
 
   addExtensions() {
     const extensions: AnyExtension[] = [];
@@ -244,9 +217,7 @@ export const BaseKit = Extension.create<BaseKitOptions>({
     if (this.options.textStyle !== false) {
       extensions.push(TextStyle.configure(this.options.textStyle));
     }
-    // if (this.options.iframe !== false) {
-    //   extensions.push(Iframe.configure(this.options.iframe));
-    // }
+
     if (this.options.trailingNode !== false) {
       extensions.push(TrailingNode.configure(this.options.trailingNode));
     }
