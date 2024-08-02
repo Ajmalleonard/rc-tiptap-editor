@@ -1,5 +1,8 @@
+/* eslint-disable indent */
+/* eslint-disable import/named */
 import TiptapTable from '@tiptap/extension-table';
 import type { TableRowOptions } from '@tiptap/extension-table-row';
+import { columnResizing, tableEditing } from '@tiptap/pm/tables';
 
 import TableActionButton from '@/extensions/Table/components/TableActionButton';
 import { GeneralOptions } from '@/types';
@@ -46,6 +49,27 @@ export const Table = TiptapTable.extend<TableOptions>({
         },
       }),
     };
+  },
+  addProseMirrorPlugins() {
+    const isResizable = this.options.resizable;
+
+    return [
+      ...(isResizable
+        ? [
+            columnResizing({
+              handleWidth: this.options.handleWidth,
+              cellMinWidth: this.options.cellMinWidth,
+              // @ts-expect-error incorrect type https://github.com/ueberdosis/tiptap/blob/b0198eb14b98db5ca691bd9bfe698ffaddbc4ded/packages/extension-table/src/table.ts#L253
+              View: this.options.View,
+              lastColumnResizable: this.options.lastColumnResizable,
+            }),
+          ]
+        : []),
+
+      tableEditing({
+        allowTableNodeSelection: this.options.allowTableNodeSelection,
+      }),
+    ];
   },
   addExtensions() {
     return [

@@ -45,7 +45,6 @@ import {
   Table,
   TableCellsMerge,
   TableCellsSplit,
-  TextQuote,
   Trash,
   Trash2,
   Type,
@@ -53,10 +52,8 @@ import {
   Undo2,
   Unlink,
   Video,
-  WholeWord,
 } from 'lucide-react';
 import {
-  LineHeightIcon,
   TextAlignCenterIcon,
   TextAlignJustifyIcon,
   TextAlignLeftIcon,
@@ -69,6 +66,7 @@ import { AspectRatio } from '@/components/icons/AspectRatio';
 import { FormatLineHeight } from '@/components/icons/LineHeight';
 import { FileWordOutline } from '@/components/icons/FileWordOutline';
 import { MenuDown } from '@/components/icons/MenuDown';
+import { BlockquoteLeft } from '@/components/icons/Blockquote';
 
 export const icons = {
   Bold: Bold,
@@ -76,7 +74,7 @@ export const icons = {
   Italic: Italic,
   Underline: Underline,
   Quote: Quote,
-  TextQuote: TextQuote,
+  TextQuote: BlockquoteLeft,
   Strikethrough: Strikethrough,
   Minus: Minus,
   Eraser: Eraser,
