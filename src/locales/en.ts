@@ -122,6 +122,7 @@ const locale: Record<string, string> = {
   'editor.table.insertRowAbove': 'Insert Row Above',
   'editor.table.insertRowBelow': 'Insert Row Below',
   'editor.table.deleteRow': 'Delete Row',
+  'editor.emoji.tooltip': 'Emoji',
 };
 
 export default locale;

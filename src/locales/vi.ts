@@ -122,6 +122,7 @@ const locale: Record<string, string> = {
   'editor.table.insertRowAbove': 'Chèn hàng phía trên',
   'editor.table.insertRowBelow': 'Chèn hàng phía dưới',
   'editor.table.deleteRow': 'Xóa hàng',
+  'editor.emoji.tooltip': 'Biểu tượng',
 };
 
 export default locale;

@@ -16,6 +16,7 @@ import { EDITOR_UPDATE_WATCH_THROTTLE_WAIT_TIME } from '@/constants';
 import ColumnsMenu from '@/extensions/MultiColumn/menus/ColumnsMenu';
 import TableBubbleMenu from '@/extensions/Table/menus/TableBubbleMenu';
 import { useLocale } from '@/locales';
+import { themeActions } from '@/theme/theme';
 import { hasExtension } from '@/utils/utils';
 
 import '../styles/index.scss';
@@ -71,6 +72,7 @@ function RcTiptapEditor(props: IPropsRcTiptapEditor, ref: any) {
 
   useEffect(() => {
     document.body.classList.toggle('dark', props.dark);
+    themeActions.setTheme(props.dark ? 'dark' : 'light');
   }, [props.dark]);
 
   useEffect(() => {

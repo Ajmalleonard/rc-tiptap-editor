@@ -38,6 +38,7 @@ import {
   Quote,
   Redo2,
   Replace,
+  SmilePlus,
   Sparkles,
   Strikethrough,
   Subscript,
@@ -136,6 +137,8 @@ export const icons = {
   SizeM: SizeM,
   SizeL: SizeL,
   AspectRatio: AspectRatio,
+
+  Emoji: SmilePlus,
 } as any;
 
 export default icons;

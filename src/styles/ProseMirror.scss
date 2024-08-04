@@ -259,4 +259,12 @@
       @apply font-bold;
     }
   }
+
+  // Emoji extension styles
+  [data-type='emoji'] {
+    img {
+      height: 1em;
+      width: 1em;
+    }
+  }
 }
