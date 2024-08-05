@@ -2,7 +2,7 @@
 import type { HistoryOptions as TiptapHistoryOptions } from '@tiptap/extension-history';
 import { History as TiptapHistory } from '@tiptap/extension-history';
 
-import ActionButton from '@/components/ActionButton';
+import HistoryActionButton from '@/extensions/History/components/HistoryActionButton';
 import type { GeneralOptions } from '@/types';
 
 export interface HistoryOptions extends TiptapHistoryOptions, GeneralOptions<HistoryOptions> {}
@@ -17,7 +17,7 @@ export const History = TiptapHistory.extend<HistoryOptions>({
       newGroupDelay: 500,
       button: ({ editor, t }: any) => {
         return historys.map((item) => ({
-          component: ActionButton,
+          component: HistoryActionButton,
           componentProps: {
             action: () => {
               if (item === 'undo') {
@@ -29,6 +29,7 @@ export const History = TiptapHistory.extend<HistoryOptions>({
             },
             shortcutKeys: item === 'undo' ? ['mod', 'Z'] : ['shift', 'mod', 'Z'],
             disabled: item === 'undo' ? !editor.can().undo() : !editor.can().redo(),
+            isActive: () => (item === 'undo' ? !editor.can().undo() : !editor.can().redo()),
             icon: item === 'undo' ? 'Undo2' : 'Redo2',
             tooltip: t(`editor.${item}.tooltip`),
           },
