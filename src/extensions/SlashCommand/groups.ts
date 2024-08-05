@@ -105,6 +105,17 @@ export function renderGroups(editor: any) {
           },
         },
         {
+          name: 'video',
+          label: localeActions.t('editor.video.tooltip'),
+          iconName: 'Video',
+          description: 'Insert a video',
+          aliases: ['video', 'sp', 'shipin'],
+          shouldBeHidden: (editor) => editor.isActive('columns'),
+          action: ({ editor, range }) => {
+            editor.chain().focus().deleteRange(range).setVideoUpload().run();
+          },
+        },
+        {
           name: 'table',
           label: localeActions.t('editor.table.tooltip'),
           iconName: 'Table',
@@ -130,80 +141,26 @@ export function renderGroups(editor: any) {
             editor.chain().focus().deleteRange(range).setHorizontalRule().run();
           },
         },
-        {
-          name: 'video',
-          label: localeActions.t('editor.video.tooltip'),
-          iconName: 'Video',
-          description: 'Insert a video',
-          aliases: ['video', 'sp', 'shipin'],
-          shouldBeHidden: (editor) => editor.isActive('columns'),
-          action: ({ editor, range }) => {
-            editor.chain().focus().deleteRange(range).setVideoUpload().run();
-          },
-        },
-        {
-          name: 'columns',
-          label: localeActions.t('editor.columns.tooltip'),
-          iconName: 'Columns2',
-          description: 'Add two column content',
-          aliases: ['columns', 'cols', '2cols'],
-          shouldBeHidden: (editor) => editor.isActive('columns'),
-          action: ({ editor, range }) => {
-            editor
-              .chain()
-              .deleteRange(range)
-              .setColumns()
-              .focus(editor.state.selection.head - 1)
-              .run();
-          },
-        },
+
+        // {
+        //   name: 'columns',
+        //   label: localeActions.t('editor.columns.tooltip'),
+        //   iconName: 'Columns2',
+        //   description: 'Add two column content',
+        //   aliases: ['columns', 'cols', '2cols'],
+        //   shouldBeHidden: (editor) => editor.isActive('columns'),
+        //   action: ({ editor, range }) => {
+        //     editor
+        //       .chain()
+        //       .deleteRange(range)
+        //       .setColumns()
+        //       .focus(editor.state.selection.head - 1)
+        //       .run();
+        //   },
+        // },
       ],
     },
   ];
-  // const hasAI = hasExtension(editor, 'Ai');
-  // const hasIframes = hasExtension(editor, 'iframes');
-  // if (hasAI) {
-  //   groups.unshift({
-  //     name: 'ai',
-  //     title: 'AI',
-  //     commands: [
-  //       {
-  //         name: 'aiWriter',
-  //         label: 'AI智能助手',
-  //         iconName: 'Sparkles',
-  //         description: 'Let AI finish your thoughts',
-  //         shouldBeHidden: (editor) => editor.isActive('columns'),
-  //         action: ({ editor, range }) => {
-  //           editor.chain().focus().deleteRange(range).activateMagic().run();
-  //         },
-  //       },
-  //     ],
-  //   });
-  // }
-  // if (hasIframes) {
-  //   const services = AllEmbedServices;
-  //   groups.push({
-  //     name: 'others',
-  //     title: localeActions.t('editor.slash.embed'),
-  //     commands: services.map((item) => ({
-  //       name: item.value,
-  //       label: item.label,
-  //       iconName: item.icon,
-  //       aliases: [item.value, item.label],
-  //       shouldBeHidden: (editor) => editor.isActive('columns'),
-  //       action: ({ editor, range }) => {
-  //         editor
-  //           .chain()
-  //           .deleteRange(range)
-  //           .focus()
-  //           .setIframe({
-  //             src: '',
-  //             service: item.value,
-  //           })
-  //           .run();
-  //       },
-  //     })),
-  //   });
-  // }
+
   return groups;
 }

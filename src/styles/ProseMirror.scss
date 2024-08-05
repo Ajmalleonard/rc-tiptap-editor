@@ -106,6 +106,10 @@
     }
   }
 
+  .layout-two-column.is-empty::before {
+    display: none !important;
+  }
+
   [data-type='column'] {
     @apply overflow-auto;
   }

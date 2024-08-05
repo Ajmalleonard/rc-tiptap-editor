@@ -69,6 +69,9 @@ export const SlashCommand = Extension.create({
           view.focus();
         },
         items: ({ query }: { query: string; editor: Editor }) => {
+          // get options
+          console.log(this);
+
           // Filter commands
           const groups = renderGroups(this.editor);
           const withFilteredCommands = groups.map((group) => ({

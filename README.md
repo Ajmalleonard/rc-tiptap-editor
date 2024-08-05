@@ -52,7 +52,6 @@ yarn add rc-tiptap-editor
 import RcTiptapEditor, {
   BaseKit,
   History,
-  Columns,
   FormatPainter,
   Clear,
   Heading,
@@ -90,6 +89,7 @@ import 'rc-tiptap-editor/style.css';
 
 const extensions = [
   BaseKit.configure({
+    multiColumn: true,
     placeholder: {
       showOnlyCurrent: true,
     },
@@ -98,7 +98,6 @@ const extensions = [
     },
   }),
   History,
-  Columns,
   FormatPainter,
   Clear,
   FontFamily,

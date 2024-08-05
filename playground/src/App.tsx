@@ -6,7 +6,6 @@ import { createLowlight, common } from 'lowlight';
 import RcTiptapEditor, {
   BaseKit,
   History,
-  Columns,
   FormatPainter,
   Clear,
   Heading,
@@ -46,6 +45,7 @@ import 'rc-tiptap-editor/style.css';
 
 const extensions = [
   BaseKit.configure({
+    multiColumn: true,
     placeholder: {
       showOnlyCurrent: true,
     },
@@ -54,7 +54,6 @@ const extensions = [
     },
   }),
   History,
-  Columns,
   FormatPainter,
   Clear,
   FontFamily,
@@ -106,14 +105,13 @@ const extensions = [
   Blockquote,
   SlashCommand,
   HorizontalRule,
-  // Fullscreen.configure({ spacer: true }),
   Code,
   CodeBlock.configure({ lowlight: createLowlight(common) }),
   ColumnToolbar,
   Table,
 ];
 
-const DEFAULT = `<h1 style="text-align: center">Rc Tiptap Editor</h1><p>A modern WYSIWYG rich text editor based on <a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://github.com/scrumpy/tiptap">tiptap</a> and <a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://ui.shadcn.com/">shadcn ui</a> for Reactjs</p><p></p><p style="text-align: center"></p><p style="text-align: center"><img height="auto" src="https://picsum.photos/1920/1080.webp?t=1" width="500"></p><p></p><div data-type="horizontalRule"><hr></div><h2>Demo</h2><p>👉<a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://rc-tiptap-editor.vercel.app/">Demo</a></p><h2>Features</h2><ul><li><p>Use <a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://ui.shadcn.com/">shadcn ui</a> components</p></li><li><p>Markdown support</p></li><li><p>TypeScript support</p></li><li><p>I18n support</p></li><li><p>React support</p></li><li><p>Slash Commands</p></li><li><p>Multi Column</p></li><li><p>TailwindCss</p></li></ul><h2>Installation</h2><pre><code>pnpm add rc-tiptap-editor</code></pre><p></p>`;
+const DEFAULT = `<h1 style="text-align: center">Rc Tiptap Editor</h1><p>A modern WYSIWYG rich text editor based on <a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://github.com/scrumpy/tiptap">tiptap</a> and <a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://ui.shadcn.com/">shadcn ui</a> for Reactjs</p><p></p><p style="text-align: center"></p><p style="text-align: center"><img height="auto" src="https://picsum.photos/1920/1080.webp?t=1" width="500"></p><p></p><div data-type="horizontalRule"><hr></div><h2>Demo</h2><p>👉<a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://rc-tiptap-editor.vercel.app/">Demo</a></p><h2>Features</h2><ul><li><p>Use <a target="_blank" rel="noopener noreferrer nofollow" class="link" href="https://ui.shadcn.com/">shadcn ui</a> components</p></li><li><p>Markdown support</p></li><li><p>TypeScript support</p></li><li><p>I18n support</p></li><li><p>React support</p></li><li><p>Slash Commands</p></li><li><p>Multi Column</p></li><li><p>TailwindCss</p></li><li><p>Support emoji</p></li></ul><h2>Installation</h2><pre><code>pnpm add rc-tiptap-editor</code></pre><p></p>`;
 
 function debounce(func: any, wait: number) {
   let timeout: NodeJS.Timeout;

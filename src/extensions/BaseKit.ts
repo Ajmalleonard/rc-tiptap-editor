@@ -2,6 +2,7 @@ import type { AnyExtension } from '@tiptap/core';
 import { Extension } from '@tiptap/core';
 import type { CharacterCountOptions } from '@tiptap/extension-character-count';
 import { CharacterCount } from '@tiptap/extension-character-count';
+import { Document as TiptapDocumentDefault } from '@tiptap/extension-document';
 import type { DropcursorOptions } from '@tiptap/extension-dropcursor';
 import { Dropcursor } from '@tiptap/extension-dropcursor';
 import type { FocusOptions } from '@tiptap/extension-focus';
@@ -20,6 +21,7 @@ import type { TextStyleOptions } from '@tiptap/extension-text-style';
 import { TextStyle } from '@tiptap/extension-text-style';
 
 import { Document } from '@/extensions/Document';
+import { Columns } from '@/extensions/MultiColumn';
 import { Selection } from '@/extensions/Selection';
 import { TextBubble, TextBubbleOptions } from '@/extensions/TextBubble';
 import { TrailingNode, TrailingNodeOptions } from '@/extensions/TrailingNode';
@@ -32,9 +34,9 @@ export interface BaseKitOptions {
   /**
    * Whether to enable the document option
    *
-   * @default true
+   * @default false
    */
-  document: false;
+  multiColumn?: boolean;
 
   /**
    * Whether to enable the text option
@@ -144,6 +146,13 @@ export const BaseKit = Extension.create<BaseKitOptions>({
 
   addExtensions() {
     const extensions: AnyExtension[] = [];
+    if (this.options.multiColumn) {
+      extensions.push(Document.configure());
+      extensions.push(Columns);
+    } else {
+      extensions.push(TiptapDocumentDefault);
+    }
+
     if (this.options.placeholder !== false) {
       extensions.push(
         Placeholder.configure({
@@ -171,10 +180,6 @@ export const BaseKit = Extension.create<BaseKitOptions>({
           ...this.options.focus,
         }),
       );
-    }
-
-    if (this.options.document !== false) {
-      extensions.push(Document.configure());
     }
 
     if (this.options.text !== false) {
