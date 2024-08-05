@@ -38,7 +38,7 @@ export function getLocaleConfig(lang: string) {
     },
     {
       text: t('Playground'),
-      link: `https://rc-tiptap-editor.vercel.app/`,
+      link: `https://rc-tiptap-editor-playground.vercel.app/`,
     },
   ];
 
