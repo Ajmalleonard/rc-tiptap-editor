@@ -20,7 +20,7 @@ export function getLocaleConfig(lang: string) {
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:url', content: docsLink }],
     ['meta', { property: 'twitter:card', content: 'summary_large_image' }],
-    ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' }],
     ['meta', { name: 'theme-color', content: '#914796' }],
     ['link', { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' }],
   ];
