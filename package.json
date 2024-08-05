@@ -18,7 +18,7 @@
   },
   "sideEffects": false,
   "license": "MIT",
-  "homepage": "https://rc-tiptap-editor.vercel.app",
+  "homepage": "https://rc-tiptap-editor.vercel.app/",
   "repository": {
     "type": "git",
     "url": "https://github.com/hunghg255/rc-tiptap-editor.git"
@@ -49,7 +49,8 @@
     "build:playground": "pnpm build:lib && pnpm --dir ./playground run build",
     "docs:dev": "pnpm --parallel --filter docs... dev",
     "docs:build": "pnpm --filter docs... build",
-    "docs:preview": "pnpm -C docs preview"
+    "docs:preview": "pnpm -C docs preview",
+    "prepublishOnly": "pnpm run 'build:lib'"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.2.1",
