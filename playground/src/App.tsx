@@ -39,6 +39,7 @@ import RcTiptapEditor, {
   Code,
   locale,
   Emoji,
+  EmojiSuggesstion,
 } from 'rc-tiptap-editor';
 
 import 'rc-tiptap-editor/style.css';
@@ -64,7 +65,10 @@ const extensions = [
   Underline,
   Strike,
   MoreMark,
-  Emoji,
+  Emoji.configure({
+    enableEmoticons: true,
+  }),
+  EmojiSuggesstion,
   Color.configure({ spacer: true }),
   Highlight,
   BulletList,

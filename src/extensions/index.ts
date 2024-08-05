@@ -101,4 +101,4 @@ export type { FormatPainterOptions } from './FormatPainter';
 export { Columns, ColumnToolbar } from './MultiColumn';
 export type { ColumnsOptions } from './MultiColumn';
 
-export { Emoji } from './Emoji';
+export { Emoji, EmojiSuggesstion } from './Emoji';

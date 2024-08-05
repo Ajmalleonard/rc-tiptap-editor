@@ -1,3 +1,9 @@
+/* eslint-disable no-sequences */
+/* eslint-disable indent */
+/* eslint-disable no-void */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { TiptapProExtensionEmoji } from 'tiptap-extension-emoji';
 
 import EmojiActionButton from '@/extensions/Emoji/components/EmojiActionButton';

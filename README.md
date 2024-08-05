@@ -36,6 +36,7 @@
 - Image support
 - Image upload support
 - Video upload support
+- Support emoji
 
 ## Installation
 
