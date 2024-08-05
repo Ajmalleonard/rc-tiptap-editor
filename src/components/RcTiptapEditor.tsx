@@ -133,12 +133,12 @@ function RcTiptapEditor(props: IPropsRcTiptapEditor, ref: any) {
   return (
     <TooltipProvider delayDuration={0}>
       <div className='rc-tiptap-editor rounded-[0.5rem] bg-background shadow overflow-hidden outline outline-1'>
-        <ColumnsMenu editor={editor} />
-        <TableBubbleMenu editor={editor} />
-        <ContentMenu editor={editor} disabled={props?.disabled} />
-
         {!props?.hideBubble && (
           <>
+            <ColumnsMenu editor={editor} />
+            <TableBubbleMenu editor={editor} />
+            <ContentMenu editor={editor} disabled={props?.disabled} />
+
             <BubbleMenuLink editor={editor} disabled={props?.disabled} />
             <BubbleMenuText editor={editor} disabled={props?.disabled} />
             <BubbleMenuImage editor={editor as any} disabled={props?.disabled} />
@@ -147,8 +147,10 @@ function RcTiptapEditor(props: IPropsRcTiptapEditor, ref: any) {
         )}
 
         <div className='flex flex-col w-full max-h-full'>
-          {<Toolbar editor={editor} disabled={props?.disabled} />}
+          {!props?.hideToolbar && <Toolbar editor={editor} disabled={props?.disabled} />}
+
           <EditorContent className={`relative ${props?.contentClass || ''}`} editor={editor} />
+
           <div className='flex justify-between border-t p-3 items-center'>
             {hasExtensionValue && (
               <div className='flex flex-col'>
