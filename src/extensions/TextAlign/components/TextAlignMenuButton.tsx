@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Toggle } from '@/components/ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ButtonViewReturnComponentProps } from '@/types';
+import { getShortcutKey } from '@/utils/plateform';
 
 interface IPropsTextAlignMenuButton {}
 
@@ -86,9 +87,9 @@ const TextAlignMenuButton = (props: IPropsTextAlignMenuButton) => {
               </TooltipTrigger>
               <TooltipContent className='flex flex-col items-center'>
                 <span>{item.title}</span>
-                {/* <span>
-                { item.shortcutKeys?.map(item => getShortcutKey(item)).join(' ') }
-              </span> */}
+                {!!item.shortcutKeys?.length && (
+                  <span>{item.shortcutKeys?.map((item) => getShortcutKey(item)).join(' ')}</span>
+                )}
               </TooltipContent>
             </Tooltip>
           );

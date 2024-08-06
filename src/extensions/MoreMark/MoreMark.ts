@@ -7,7 +7,6 @@ import { Superscript as TiptapSuperscript } from '@tiptap/extension-superscript'
 
 import ActionMoreButton, { Item } from '@/extensions/MoreMark/components/ActionMoreButton';
 import type { GeneralOptions } from '@/types';
-import { hasExtension } from '@/utils/utils';
 
 export interface MoreMarkOptions extends GeneralOptions<MoreMarkOptions> {
   /**
@@ -49,7 +48,7 @@ export const MoreMark = Extension.create<MoreMarkOptions>({
           title: t('editor.superscript.tooltip'),
           shortcutKeys: ['mod', ','],
         };
-        const hasCode = hasExtension(editor, 'code');
+        // const hasCode = hasExtension(editor, 'code');
 
         const items: Item[] = [];
 
@@ -59,19 +58,19 @@ export const MoreMark = Extension.create<MoreMarkOptions>({
         if (superscript !== false) {
           items.push(superBtn);
         }
-        if (hasCode) {
-          const codeBtn: Item = {
-            action: () => editor.commands.toggleCode(),
-            isActive: () => editor.isActive('code') || false,
-            disabled: !editor.can().toggleCode(),
-            icon: 'Code',
-            title: t('editor.code.tooltip'),
-            shortcutKeys: ['mod', 'E'],
-          };
-          if (hasCode) {
-            items.push(codeBtn);
-          }
-        }
+        // if (hasCode) {
+        //   const codeBtn: Item = {
+        //     action: () => editor.commands.toggleCode(),
+        //     isActive: () => editor.isActive('code') || false,
+        //     disabled: !editor.can().toggleCode(),
+        //     icon: 'Code',
+        //     title: t('editor.code.tooltip'),
+        //     shortcutKeys: ['mod', 'E'],
+        //   };
+        //   if (hasCode) {
+        //     items.push(codeBtn);
+        //   }
+        // }
 
         return {
           component: ActionMoreButton,

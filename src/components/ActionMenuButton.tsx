@@ -4,6 +4,7 @@ import icons from '@/components/icons/icons';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ButtonViewReturnComponentProps } from '@/types';
+import { getShortcutKeys } from '@/utils/plateform';
 
 interface IPropsActionMenuButton {
   icon?: any;
@@ -38,9 +39,9 @@ const ActionMenuButton = (props: IPropsActionMenuButton) => {
       <TooltipContent>
         <div className='max-w-24 text-center flex flex-col items-center'>
           {props?.tooltip && <div>{props?.tooltip}</div>}
-          {/* <div className="flex" v-if="shortcutKeys && shortcutKeys.length">
-          <span>{{ getShortcutKeys(shortcutKeys) }}</span>
-        </div> */}
+          <div className='flex'>
+            {!!props?.shortcutKeys?.length && <span>{getShortcutKeys(props?.shortcutKeys)}</span>}
+          </div>
         </div>
       </TooltipContent>
     </Tooltip>

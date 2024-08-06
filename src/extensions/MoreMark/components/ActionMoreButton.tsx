@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ButtonViewReturnComponentProps } from '@/types';
+import { getShortcutKeys } from '@/utils/plateform';
 
 export interface Item {
   title: string;
@@ -74,9 +75,11 @@ const ActionMoreButton = (props: IPropsActionMoreButton) => {
             >
               <Icon name={item?.icon} />
               <span className='ml-1'>{item.title}</span>
-              {/* {item.shortcutKeys && (
-                    <span className='ml-auto'>{item.shortcutKeys}</span>
-                  )} */}
+              {!!item?.shortcutKeys && (
+                <span className='text-xs tracking-widest opacity-60 ml-auto'>
+                  {getShortcutKeys(item.shortcutKeys)}
+                </span>
+              )}
             </DropdownMenuCheckboxItem>
           );
         })}

@@ -16,6 +16,7 @@ interface IPropsHighlightActionButton {
   action?: ButtonViewReturnComponentProps['action'];
   isActive?: ButtonViewReturnComponentProps['isActive'];
   tooltipOptions?: TooltipContentProps;
+  shortcutKeys?: string[];
 }
 
 const IconC = ({ fill }: any) => {
@@ -85,6 +86,7 @@ const HighlightActionButton = (props: IPropsHighlightActionButton) => {
         disabled={props?.disabled}
         action={toggleColor}
         tooltipOptions={props?.tooltipOptions}
+        shortcutKeys={props?.shortcutKeys}
       >
         <span className='text-sm flex items-center justify-center'>
           <IconC fill={selectedColor} />

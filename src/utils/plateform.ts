@@ -19,11 +19,11 @@ export function isMac(): boolean {
  * 根据 Mac 和非 Mac 平台，返回应该用于键盘快捷键的修饰键的可读版本。用于直观地指示应该按哪个键。
  */
 export function getShortcutKey(key: string): string {
-  if (key.toLowerCase() === 'mod') {
+  if (`${key}`.toLowerCase() === 'mod') {
     return isMac() ? '⌘' : 'Ctrl';
-  } else if (key.toLowerCase() === 'alt') {
+  } else if (`${key}`.toLowerCase() === 'alt') {
     return isMac() ? '⌥' : 'Alt';
-  } else if (key.toLowerCase() === 'shift') {
+  } else if (`${key}`.toLowerCase() === 'shift') {
     return isMac() ? '⇧' : 'Shift';
   } else {
     return key;

@@ -8,6 +8,7 @@ import icons from '@/components/icons/icons';
 import { Toggle } from '@/components/ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ButtonViewReturnComponentProps } from '@/types';
+import { getShortcutKeys } from '@/utils/plateform';
 
 interface IPropsActionButton {
   icon?: string;
@@ -61,6 +62,7 @@ const ActionButton = (props?: Partial<IPropsActionButton>) => {
         <TooltipContent {...tooltipOptions}>
           <div className='max-w-24 text-center flex flex-col items-center'>
             <div>{tooltip}</div>
+            {!!props?.shortcutKeys?.length && <span>{getShortcutKeys(props?.shortcutKeys)}</span>}
           </div>
         </TooltipContent>
       )}

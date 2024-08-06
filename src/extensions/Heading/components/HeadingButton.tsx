@@ -6,9 +6,11 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ButtonViewReturnComponentProps } from '@/types';
+import { getShortcutKey } from '@/utils/plateform';
 
 export interface Item {
   title: string;
@@ -69,9 +71,11 @@ const HeadingButton = (props: Props) => {
                 onClick={item.action}
               >
                 <div className={`ml-1 h-full heading-${item.level}`}>{item.title}</div>
-                {/* <DropdownMenuShortcut class="pl-4">{{
-            item.shortcutKeys?.map((item) => getShortcutKey(item)).join(' ')
-          }}</DropdownMenuShortcut> */}
+                {!!item?.shortcutKeys?.length && (
+                  <DropdownMenuShortcut className='pl-4'>
+                    {item?.shortcutKeys?.map((item: any) => getShortcutKey(item)).join(' ')}
+                  </DropdownMenuShortcut>
+                )}
               </DropdownMenuCheckboxItem>
               {item.level === 0 && <DropdownMenuSeparator />}
             </Fragment>
